@@ -3,23 +3,26 @@
 import { motion } from "motion/react";
 import { Star, Quote } from "lucide-react";
 import { Avatar, AvatarFallback } from "@shared/ui/lib/avatar";
-import { useMemo } from "react";
-import { getAnimationConfig } from "@shared/lib/performance";
 import { testimonials } from "./Testiminials.data";
+import { useAnimationConfig } from "@shared/hooks";
 
 interface TestimonialsProps {
   onContactClick?: () => void;
 }
 
 export function Testimonials({ onContactClick }: TestimonialsProps) {
-  const animConfig = useMemo(() => getAnimationConfig(), []);
+  const animConfig = useAnimationConfig();
 
   return (
     <section className="relative py-20 sm:py-32 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 bg-linear-to-t from-accent/5 via-transparent to-transparent" />
-      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl opacity-20" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl opacity-20" />
+      {animConfig.complexAnimations && (
+        <>
+          <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl opacity-20" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl opacity-20" />
+        </>
+      )}
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div

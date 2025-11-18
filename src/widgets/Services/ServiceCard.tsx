@@ -4,6 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { ArrowRight, LucideIcon } from "lucide-react";
 import { useState, useMemo } from "react";
 import { getAnimationConfig } from "@shared/lib/performance";
+import { useAnimationConfig } from "@shared/hooks";
 
 interface ServiceCardProps {
   service: Service;
@@ -22,7 +23,7 @@ export interface Service {
 
 export function ServiceCard({ service, index, onClick }: ServiceCardProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const animConfig = useMemo(() => getAnimationConfig(), []);
+  const animConfig = useAnimationConfig();
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);

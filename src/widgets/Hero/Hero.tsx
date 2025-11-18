@@ -8,21 +8,18 @@ import {
 import { trackButtonClick } from "@shared/lib/analytics";
 import { TELEGRAM_URL } from "@shared/lib/constants";
 import { fadeIn, fadeInUp } from "@shared/lib/motionConfig";
-import { getAnimationConfig } from "@shared/lib/performance";
 import { ArrowRight, MessageSquare } from "lucide-react";
-import { motion, Transition } from "motion/react";
-import { useMemo, useState } from "react";
+import { motion } from "motion/react";
+import { useState } from "react";
 import { ContactModal } from "@shared/modals/ContactModal";
 
 import { ButtonContainer } from "./Hero.styles";
 import { keyframes } from "./HeroAnimations";
+import { useAnimationConfig } from "@shared/hooks";
 
 export function Hero() {
-  const animConfig = useMemo(() => getAnimationConfig(), []);
+  const animConfig = useAnimationConfig();
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-
-  const fadeUp: Transition = { duration: 0.6, ease: [0.4, 0, 0.2, 1] };
-  const spring: Transition = { type: "spring", stiffness: 200, damping: 20 };
 
   return (
     <>
@@ -44,10 +41,15 @@ export function Hero() {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 sm:py-24 lg:py-32 text-center">
-          <motion.div variants={fadeInUp} initial="hidden" animate="visible">
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            animate={animConfig.shouldAnimate ? "visible" : "hidden"}
+            transition={{ duration: animConfig.duration }}
+          >
             <motion.div
               variants={fadeIn}
-              className="inline-block mb-6 px-4 py-2 rounded-full border border-border bg-secondary/50 backdrop-blur-sm"
+              className="inline-block mb-6 px-4 py-2 rounded-full border border-border bg-secondary/50 md:backdrop-blur-sm"
             >
               <span className="text-muted-foreground">
                 Digital & AI Solutions
@@ -70,9 +72,13 @@ export function Hero() {
                   trackButtonClick("Оставить заявку", "hero");
                   setIsContactModalOpen(true);
                 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative px-10 py-4 bg-accent text-accent-foreground rounded-full transition-all duration-300 hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] flex items-center gap-3 overflow-hidden text-lg font-semibold shine"
+                whileHover={
+                  animConfig.shouldAnimate ? { scale: 1.05 } : undefined
+                }
+                whileTap={
+                  animConfig.shouldAnimate ? { scale: 0.95 } : undefined
+                }
+                className="group relative px-10 py-4 bg-accent text-accent-foreground rounded-full transition-all duration-300 md:hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] flex items-center gap-3 overflow-hidden text-lg font-semibold shine"
                 aria-label="Оставить заявку"
               >
                 <ArrowRight className="w-5 h-5 relative z-10" />
@@ -84,9 +90,13 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackButtonClick("Telegram", "hero")}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group px-10 py-4 border-2 border-accent/50 bg-background/50 backdrop-blur-sm text-foreground rounded-full transition-all duration-300 hover:border-accent hover:bg-accent/10 hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] flex items-center gap-3 text-lg font-semibold"
+                whileHover={
+                  animConfig.shouldAnimate ? { scale: 1.05 } : undefined
+                }
+                whileTap={
+                  animConfig.shouldAnimate ? { scale: 0.95 } : undefined
+                }
+                className="group px-10 py-4 border-2 border-accent/50 bg-background/50 md:backdrop-blur-sm text-foreground rounded-full transition-all duration-300 hover:border-accent hover:bg-accent/10 md:hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] flex items-center gap-3 text-lg font-semibold"
                 aria-label="Написать в Telegram"
               >
                 <MessageSquare className="w-5 h-5" />

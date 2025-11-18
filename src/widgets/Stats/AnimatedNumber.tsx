@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import { useInView } from "motion/react";
 import { getAnimationConfig } from "@shared/lib/performance";
+import { useAnimationConfig } from "@shared/hooks";
 
 interface AnimatedNumberProps {
   value: number;
@@ -13,7 +14,7 @@ export function AnimatedNumber({ value, duration = 2 }: AnimatedNumberProps) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const animConfig = useMemo(() => getAnimationConfig(), []);
+  const animConfig = useAnimationConfig();
 
   useEffect(() => {
     if (!isInView) return;

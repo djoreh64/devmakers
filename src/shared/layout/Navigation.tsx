@@ -9,6 +9,7 @@ import { TELEGRAM_URL, CONTACT_EMAIL } from "@shared/lib/constants";
 import { Logo } from "../ui/atoms/Logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAnimationConfig } from "../hooks";
 
 const portfolioItems = [
   {
@@ -56,7 +57,7 @@ export function Navigation() {
   const [showPortfolio, setShowPortfolio] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobilePortfolioOpen, setMobilePortfolioOpen] = useState(false);
-  const animConfig = useMemo(() => getAnimationConfig(), []);
+  const animConfig = useAnimationConfig();
 
   useEffect(() => {
     // Throttle scroll handler for better performance
@@ -99,7 +100,7 @@ export function Navigation() {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border"
+          ? "bg-background/80 backdrop-blur-sm border-b border-border"
           : "bg-transparent"
       }`}
     >
@@ -180,7 +181,7 @@ export function Navigation() {
                 onMouseLeave={() => setShowPortfolio(false)}
                 className="absolute top-full left-1/2 -translate-x-1/2 pt-2"
               >
-                <div className="w-[600px] p-6 rounded-2xl border border-border bg-background/95 backdrop-blur-xl shadow-2xl">
+                <div className="w-[600px] p-6 rounded-2xl border border-border bg-background/95 md:backdrop-blur-xl shadow-2xl">
                   <div className="grid grid-cols-2 gap-6">
                     {portfolioItems.map((section) => (
                       <div key={section.category}>
@@ -246,7 +247,7 @@ export function Navigation() {
               onClick={toggleTheme}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-full border border-border bg-background/50 backdrop-blur-sm text-foreground hover:border-accent/50 transition-all duration-300"
+              className="p-2 rounded-full border border-border bg-background/50 md:backdrop-blur-sm text-foreground hover:border-accent/50 transition-all duration-300"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? (
@@ -272,7 +273,7 @@ export function Navigation() {
               href={`mailto:${CONTACT_EMAIL}`}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              className="hidden sm:flex px-5 py-2 border border-border bg-background/50 backdrop-blur-sm text-foreground rounded-full transition-all duration-300 hover:border-accent/50 items-center gap-2"
+              className="hidden sm:flex px-5 py-2 border border-border bg-background/50 md:backdrop-blur-sm text-foreground rounded-full transition-all duration-300 hover:border-accent/50 items-center gap-2"
             >
               <Mail className="w-4 h-4" />
               Email
@@ -303,7 +304,7 @@ export function Navigation() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl"
+            className="md:hidden border-t border-border bg-background/95 md:backdrop-blur-xl"
             style={{ maxHeight: "calc(100vh - 4rem)" }}
           >
             <div
@@ -446,7 +447,7 @@ export function Navigation() {
 
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
-                  className="flex items-center justify-center gap-2 w-full px-5 py-3 border border-border bg-background/50 backdrop-blur-sm text-foreground rounded-xl transition-all duration-300"
+                  className="flex items-center justify-center gap-2 w-full px-5 py-3 border border-border bg-background/50 md:backdrop-blur-sm text-foreground rounded-xl transition-all duration-300"
                 >
                   <Mail className="w-4 h-4" />
                   Email

@@ -51,7 +51,7 @@ export function AIConsultantPreview({ onNavigate }: AIConsultantPreviewProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-4xl mx-auto"
         >
-          <div className="relative rounded-2xl border border-border bg-secondary/20 backdrop-blur-sm overflow-hidden min-h-[650px]">
+          <div className="relative rounded-2xl border border-border bg-secondary/20 md:backdrop-blur-sm overflow-hidden min-h-[650px]">
             {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-linear-to-br from-accent/5 via-transparent to-transparent pointer-events-none" />
 
@@ -178,7 +178,7 @@ export function AIConsultantPreview({ onNavigate }: AIConsultantPreviewProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 1.1 + index * 0.1 }}
-                className="p-5 rounded-xl border border-border bg-secondary/10 backdrop-blur-sm text-center"
+                className="p-5 rounded-xl border border-border bg-secondary/10 md:backdrop-blur-sm text-center"
               >
                 <div className="text-2xl mb-2">{feature.icon}</div>
                 <h4 className="text-foreground mb-1">{feature.title}</h4>

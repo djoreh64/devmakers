@@ -2,16 +2,17 @@
 
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getAnimationConfig } from "@shared/lib/performance";
 import { projects } from "./Work.data";
+import { useAnimationConfig } from "@shared/hooks";
 
 interface WorkProps {
   onProjectClick?: (projectId: string) => void;
 }
 
 export function Work({ onProjectClick }: WorkProps) {
-  const animConfig = useMemo(() => getAnimationConfig(), []);
+  const animConfig = useAnimationConfig()
 
   return (
     <section
@@ -51,7 +52,7 @@ export function Work({ onProjectClick }: WorkProps) {
               transition={{ duration: animConfig.duration, delay: index * 0.1 }}
               whileHover={animConfig.shouldAnimate ? { y: -4 } : {}}
               onClick={() => onProjectClick?.(project.id)}
-              className="group p-8 rounded-2xl border border-border bg-background/50 backdrop-blur-sm hover:border-accent/50 transition-all duration-300 cursor-pointer"
+              className="group p-8 rounded-2xl border border-border bg-background/50 md:backdrop-blur-sm hover:border-accent/50 transition-all duration-300 cursor-pointer"
               style={{
                 willChange: animConfig.shouldAnimate ? "transform" : "auto",
               }}

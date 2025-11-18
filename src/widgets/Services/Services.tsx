@@ -6,13 +6,14 @@ import { useMemo } from "react";
 import { getAnimationConfig } from "@shared/lib/performance";
 import { ServiceCard } from "./ServiceCard";
 import { services } from "./Services.data";
+import { useAnimationConfig } from "@shared/hooks";
 
 interface ServicesProps {
   onNavigate?: (page: string) => void;
 }
 
 export function Services({ onNavigate }: ServicesProps) {
-  const animConfig = useMemo(() => getAnimationConfig(), []);
+  const animConfig = useAnimationConfig();
 
   const handleCardClick = () => {
     onNavigate?.("portfolio");

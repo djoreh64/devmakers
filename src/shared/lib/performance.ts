@@ -1,10 +1,13 @@
+"use client";
+
 // Performance utilities for optimizing animations and rendering
 
 /**
  * Check if user is on a mobile device
  */
 export const isMobileDevice = (): boolean => {
-  if (typeof navigator === "undefined") return false;
+  if (typeof navigator === "undefined" || typeof window === "undefined")
+    return false;
   return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 };
 
@@ -51,7 +54,7 @@ export const getAnimationConfig = () => {
   const complexAnimations = !shouldReduceMotion && !isLowEnd && !isMobile;
 
   return {
-    shouldAnimate: !shouldReduceMotion && !isLowEnd,
+    shouldAnimate: true,
     reducedMotion: shouldReduceMotion || isLowEnd,
     duration: shouldReduceMotion || isLowEnd ? 0.2 : 0.5,
     complexAnimations,
@@ -63,7 +66,7 @@ export const getAnimationConfig = () => {
  */
 export const throttle = <T extends (...args: any[]) => any>(
   func: T,
-  limit: number,
+  limit: number
 ): ((...args: Parameters<T>) => void) => {
   let inThrottle: boolean;
   return function (this: any, ...args: Parameters<T>) {
@@ -80,7 +83,7 @@ export const throttle = <T extends (...args: any[]) => any>(
  */
 export const debounce = <T extends (...args: any[]) => any>(
   func: T,
-  delay: number,
+  delay: number
 ): ((...args: Parameters<T>) => void) => {
   let timeoutId: NodeJS.Timeout;
   return function (this: any, ...args: Parameters<T>) {

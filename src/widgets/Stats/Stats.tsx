@@ -4,6 +4,7 @@ import { motion, useInView } from "motion/react";
 import { useRef, useEffect, useState, useMemo } from "react";
 import { TrendingUp, Users, Award, Zap } from "lucide-react";
 import { getAnimationConfig } from "@shared/lib/performance";
+import { useAnimationConfig } from "../../shared/hooks";
 
 interface Stat {
   icon: React.ElementType;
@@ -50,7 +51,7 @@ function AnimatedNumber({
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const animConfig = useMemo(() => getAnimationConfig(), []);
+  const animConfig = useAnimationConfig();
 
   useEffect(() => {
     if (!isInView) return;
@@ -85,7 +86,7 @@ function AnimatedNumber({
 }
 
 export function Stats() {
-  const animConfig = useMemo(() => getAnimationConfig(), []);
+  const animConfig = useAnimationConfig();
 
   return (
     <section className="relative py-20 sm:py-32 overflow-hidden">
@@ -123,7 +124,7 @@ export function Stats() {
               whileHover={animConfig.shouldAnimate ? { scale: 1.05 } : {}}
               className="relative group h-full"
             >
-              <div className="relative h-full p-6 sm:p-8 rounded-2xl bg-secondary/30 border border-border backdrop-blur-sm hover:bg-secondary/50 hover:border-accent/50 transition-all duration-300">
+              <div className="relative h-full p-6 sm:p-8 rounded-2xl bg-secondary/30 border border-border md:backdrop-blur-sm hover:bg-secondary/50 hover:border-accent/50 transition-all duration-300">
                 {/* Icon */}
                 <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
                   <stat.icon className="w-6 h-6 sm:w-7 sm:h-7 text-accent" />
@@ -143,7 +144,7 @@ export function Stats() {
 
                 {/* Hover glow effect - only on capable devices */}
                 {animConfig.complexAnimations && (
-                  <div className="absolute inset-0 rounded-2xl bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
+                  <div className="absolute inset-0 rounded-2xl bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 md:blur-xl" />
                 )}
               </div>
             </motion.div>

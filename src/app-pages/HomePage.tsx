@@ -43,7 +43,7 @@ export function HomePage({ onNavigate, onProjectClick }: HomePageProps) {
 
         {/* Top accent bloom */}
         <motion.div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-accent/8 rounded-full blur-[150px]"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-accent/8 rounded-full md:blur-[150px]"
           animate={{
             opacity: [0.8, 1, 0.8],
             scale: [1, 1.1, 1],
@@ -57,7 +57,7 @@ export function HomePage({ onNavigate, onProjectClick }: HomePageProps) {
 
         {/* Left side gradient flow */}
         <motion.div
-          className="absolute top-1/4 -left-1/4 w-[800px] h-[800px] bg-purple-500/6 rounded-full blur-[120px]"
+          className="absolute top-1/4 -left-1/4 w-[800px] h-[800px] bg-purple-500/6 rounded-full md:blur-[120px]"
           animate={{
             opacity: [0.6, 0.8, 0.6],
             y: [-20, 20, -20],
@@ -72,7 +72,7 @@ export function HomePage({ onNavigate, onProjectClick }: HomePageProps) {
 
         {/* Right side gradient flow */}
         <motion.div
-          className="absolute top-1/2 -right-1/4 w-[900px] h-[900px] bg-accent/6 rounded-full blur-[140px]"
+          className="absolute top-1/2 -right-1/4 w-[900px] h-[900px] bg-accent/6 rounded-full md:blur-[140px]"
           animate={{
             opacity: [0.7, 0.9, 0.7],
             y: [20, -20, 20],
@@ -87,7 +87,7 @@ export function HomePage({ onNavigate, onProjectClick }: HomePageProps) {
 
         {/* Bottom accent bloom */}
         <motion.div
-          className="absolute bottom-0 left-1/3 w-[1000px] h-[500px] bg-purple-500/7 rounded-full blur-[130px]"
+          className="absolute bottom-0 left-1/3 w-[1000px] h-[500px] bg-purple-500/7 rounded-full md:blur-[130px]"
           animate={{
             opacity: [0.8, 1, 0.8],
             scale: [1, 1.05, 1],

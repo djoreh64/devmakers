@@ -49,7 +49,7 @@ export function Clients() {
               {clients.map((client, index) => (
                 <div
                   key={`first-${index}`}
-                  className="flex items-center justify-center px-6 py-4 rounded-xl bg-secondary/30 border border-border backdrop-blur-sm hover:bg-secondary/50 hover:border-accent/30 transition-all duration-300 min-w-[200px]"
+                  className="flex items-center justify-center px-6 py-4 rounded-xl bg-secondary/30 border border-border md:backdrop-blur-sm hover:bg-secondary/50 hover:border-accent/30 transition-all duration-300 min-w-[200px]"
                 >
                   <span className="text-base sm:text-lg text-muted-foreground hover:text-foreground transition-colors">
                     {client}
@@ -60,7 +60,7 @@ export function Clients() {
               {clients.map((client, index) => (
                 <div
                   key={`second-${index}`}
-                  className="flex items-center justify-center px-6 py-4 rounded-xl bg-secondary/30 border border-border backdrop-blur-sm hover:bg-secondary/50 hover:border-accent/30 transition-all duration-300 min-w-[200px]"
+                  className="flex items-center justify-center px-6 py-4 rounded-xl bg-secondary/30 border border-border md:backdrop-blur-sm hover:bg-secondary/50 hover:border-accent/30 transition-all duration-300 min-w-[200px]"
                 >
                   <span className="text-base sm:text-lg text-muted-foreground hover:text-foreground transition-colors">
                     {client}

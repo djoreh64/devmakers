@@ -95,7 +95,7 @@ export function CTASection({ onNavigate }: CTASectionProps) {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-xl border border-border bg-background/50 backdrop-blur-sm text-foreground hover:border-accent/50 transition-all flex items-center gap-2"
+                className="px-8 py-4 rounded-xl border border-border bg-background/50 md:backdrop-blur-sm text-foreground hover:border-accent/50 transition-all flex items-center gap-2"
                 aria-label="Написать в Telegram"
               >
                 <MessageSquare className="w-5 h-5" />

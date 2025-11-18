@@ -60,7 +60,7 @@ export function Process() {
                           viewport={{ once: true }}
                           transition={{ duration: 0.6, delay: 0.2 }}
                           whileHover={{ y: -8 }}
-                          className="relative p-8 rounded-2xl border border-border bg-background/50 backdrop-blur-sm hover:border-accent/50 transition-all duration-300"
+                          className="relative p-8 rounded-2xl border border-border bg-background/50 md:backdrop-blur-sm hover:border-accent/50 transition-all duration-300"
                         >
                           {/* Number Badge */}
                           <div className="absolute -top-4 -right-4 w-12 h-12 rounded-xl bg-accent text-accent-foreground flex items-center justify-center shadow-lg">
@@ -107,7 +107,7 @@ export function Process() {
                           viewport={{ once: true }}
                           transition={{ duration: 0.6, delay: 0.2 }}
                           whileHover={{ y: -8 }}
-                          className="relative p-8 rounded-2xl border border-border bg-background/50 backdrop-blur-sm hover:border-accent/50 transition-all duration-300"
+                          className="relative p-8 rounded-2xl border border-border bg-background/50 md:backdrop-blur-sm hover:border-accent/50 transition-all duration-300"
                         >
                           {/* Number Badge */}
                           <div className="absolute -top-4 -left-4 w-12 h-12 rounded-xl bg-accent text-accent-foreground flex items-center justify-center shadow-lg">
@@ -154,7 +154,7 @@ export function Process() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     whileHover={{ y: -8 }}
-                    className="md:hidden relative p-8 rounded-2xl border border-border bg-background/50 backdrop-blur-sm hover:border-accent/50 transition-all duration-300"
+                    className="md:hidden relative p-8 rounded-2xl border border-border bg-background/50 md:backdrop-blur-sm hover:border-accent/50 transition-all duration-300"
                   >
                     {/* Number Badge */}
                     <div className="absolute -top-4 -left-4 w-12 h-12 rounded-xl bg-accent text-accent-foreground flex items-center justify-center shadow-lg">
